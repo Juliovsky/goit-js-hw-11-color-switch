@@ -19,23 +19,24 @@ const randomIntegerFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-refs.start.addEventListener('click',backgroundChanger );
-refs.stop.addEventListener('click',changeStop);
+refs.start.addEventListener('click', backgroundChanger);
+refs.stop.addEventListener('click', changeStop);
 
 let isActive = false;
 
 let timerId = null;
 
 function backgroundChanger() {
-    if(!isActive){
-        isActive=true;
+    if (!isActive) {
+        isActive = true;
         timerId = setInterval(() => {
-        refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0,colors.length)];
-        }, 1000);        
+            refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length)];
+        }, 1000);
     }
 
 }
 
-function changeStop(){
+function changeStop() {
     clearInterval(timerId);
+    isActive = false;
 }
